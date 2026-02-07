@@ -6,3 +6,34 @@ lightning_logs/
 .vscode/
 pretrained_models/
 data/
+
+
+
+# local runs / outputs
+
+output/
+
+output_*/
+
+outputs.json
+
+*.ckpt
+
+*.pt
+
+*.pth
+
+
+
+# local scratch helpers / notes / backups
+
+*.bak
+
+*.bak.*
+
+CHECKPOINT_FILE_PATH
+
+WORK_DIR=
+
+CLUSTER_ARGS=*
+
