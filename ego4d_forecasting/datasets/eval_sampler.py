@@ -61,11 +61,11 @@ class DistributedEvalSampler(Sampler):
         if num_replicas is None:
             if not dist.is_available():
                 raise RuntimeError("Requires distributed package to be available")
-            num_replicas = dist.get_world_size()
+            num_replicas = (dist.get_world_size() if dist.is_available() and dist.is_initialized() else 1)
         if rank is None:
             if not dist.is_available():
                 raise RuntimeError("Requires distributed package to be available")
-            rank = dist.get_rank()
+            rank = (dist.get_rank() if dist.is_available() and dist.is_initialized() else 0)
         self.dataset = dataset
         self.num_replicas = num_replicas
         self.rank = rank
