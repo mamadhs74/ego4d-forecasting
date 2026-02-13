@@ -38,6 +38,8 @@ class MultiTaskClassificationTask(VideoTask):
             "train_top1_noun_err": top1_err_noun.item(),
             "train_top5_noun_err": top5_err_noun.item(),
         }
+        self._test_outputs.append(out)
+        return out
 
         return step_result
 
@@ -74,18 +76,25 @@ class MultiTaskClassificationTask(VideoTask):
         for key in keys:
             metric = torch.tensor([x[key] for x in outputs]).mean()
             self.log(key, metric)
+    def on_test_epoch_start(self):
+        self._test_outputs = []
+    def on_test_epoch_start(self):
+        self._test_outputs = []
+
 
     def test_step(self, batch, batch_idx):
         inputs, labels, clip_id, _ = batch
         preds = self.forward(inputs)
-        return {
+        out = {
             "preds_verb": preds[0],
             "preds_noun": preds[1],
             "labels": labels,
             "clip_ids": clip_id,
         }
 
-    def test_epoch_end(self, outputs):
+    def on_test_epoch_end(self):
+        outputs = getattr(self, "_test_outputs", [])
+
         preds_verbs = torch.cat([x["preds_verb"] for x in outputs])
         preds_nouns = torch.cat([x["preds_noun"] for x in outputs])
         labels = torch.cat([x["labels"] for x in outputs])
@@ -154,6 +163,7 @@ class LongTermAnticipationTask(VideoTask):
 
     def __init__(self, cfg):
         super().__init__(cfg)
+        self._test_outputs = []
         self.checkpoint_metric = f"val_0_ED_{cfg.FORECASTING.NUM_ACTIONS_TO_PREDICT-1}"
 
     def forward(self, inputs, tgts):
@@ -258,13 +268,24 @@ class LongTermAnticipationTask(VideoTask):
         # The list is for each label type (e.g. [<verb_tensor>, <noun_tensor>])
         preds = self.model.generate(input, k=k)  # [(B, K, Z)]
         
-        return {
+        out = {
             'last_clip_ids': last_clip_ids,
             'verb_preds': preds[0],
             'noun_preds': preds[1],
         }
 
-    def test_epoch_end(self, outputs):
+        
+        self._test_outputs.append(out)
+
+        
+        self._test_outputs.append(out)
+        return out
+        return out
+
+
+    def on_test_epoch_end(self):
+        outputs = getattr(self, "_test_outputs", [])
+
 
         test_outputs = {}
         for key in ['verb_preds', 'noun_preds']:
