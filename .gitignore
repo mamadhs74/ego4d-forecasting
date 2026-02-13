@@ -37,3 +37,9 @@ WORK_DIR=
 
 CLUSTER_ARGS=*
 
+
+# local outputs
+outputs.json
+lightning_logs/
+*.log
+*.ckpt
