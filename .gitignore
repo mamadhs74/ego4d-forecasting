@@ -43,3 +43,8 @@ outputs.json
 lightning_logs/
 *.log
 *.ckpt
+
+# local/run artifacts
+missing_val_*.txt
+/scratch*
+/ego4d_runs*

@@ -71,15 +71,18 @@ def main(cfg):
     # Choose task type based on config.
     # TODO: change this to TASK_REGISTRY.get(cfg.cfg.DATA.TASK)(cfg)
     if cfg.DATA.TASK == "detection":
-        TaskType = DetectionTask
+        TaskCls = DetectionTask
     elif cfg.DATA.TASK == "classification":
-        TaskType = MultiTaskClassificationTask
+        TaskCls = MultiTaskClassificationTask
     elif cfg.DATA.TASK == "long_term_anticipation":
-        TaskType = LongTermAnticipationTask
+        TaskCls = LongTermAnticipationTask
     elif cfg.DATA.TASK == "short_term_anticipation":
-        TaskType = ShortTermAnticipationTask
+        TaskCls = ShortTermAnticipationTask
 
-    task = TaskType(cfg)
+
+    else:
+        raise ValueError(f"Unknown cfg.DATA.TASK={cfg.DATA.TASK!r}. Expected one of: detection, classification, long_term_anticipation, short_term_anticipation")
+    task = TaskCls(cfg)
 
     # Load model from checkpoint if checkpoint file path is given.
     ckp_path = cfg.CHECKPOINT_FILE_PATH
@@ -200,7 +203,7 @@ def main(cfg):
             # Load all child modules except for "head" if CHECKPOINT_LOAD_MODEL_HEAD is
             # False.
 
-            pretrained = TaskType.load_from_checkpoint(ckp_path)
+            pretrained = TaskCls.load_from_checkpoint(ckp_path)
             state_dict_for_child_module = {
                 child_name: child_state_dict.state_dict()
                 for child_name, child_state_dict in pretrained.model.named_children()

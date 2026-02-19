@@ -46,6 +46,8 @@ _C.BN.NUM_SYNC_DEVICES = 1
 # Training options.
 # ---------------------------------------------------------------------------- #
 _C.TRAIN = CfgNode()
+_C.TRAIN.CHECKPOINT_PERIOD = 1
+_C.TRAIN.AUTO_RESUME = True
 
 # If True Train the model, else skip training.
 _C.TRAIN.ENABLE = True
@@ -162,8 +164,7 @@ _C.MODEL.ARCH = "slow"
 _C.MODEL.MODEL_NAME = "ResNet"
 
 # The number of classes to predict for the model.
-_C.MODEL.NUM_CLASSES = [400]
-
+_C.MODEL.NUM_CLASSES = [400, 400]
 # The number of verbs to predict for the model
 _C.MODEL.NUM_VERBS = 125
 
