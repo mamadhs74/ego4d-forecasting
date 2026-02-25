@@ -1,0 +1,60 @@
+* [33m09565b1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m Make LTA val evaluation runnable on single GPU (OOM-safe) with local config
+* [33m02d992e[m Fix LTA inference on PL2: migrate test hooks, remove legacy Trainer args, guard dist init
+* [33mbe75a13[m Fix LTA inference on PL2: migrate test hooks, remove legacy Trainer args, guard dist init
+* [33m8a25709[m Ignore local outputs/logs/checkpoints
+* [33mc735222[m Ignore local run artifacts
+* [33m38d1931[m[33m ([m[1;31mupstream/main[m[33m, [m[1;31mupstream/HEAD[m[33m)[m Update ptv_dataset_helper.py
+*   [33m4a27d4a[m Merge branch 'main' of https://github.com/EGO4D/forecasting into main
+[32m|[m[33m\[m  
+[32m|[m * [33m132e81c[m v2 updates (#22)
+* [33m|[m [33m98bf696[m update readme
+* [33m|[m [33m03ca075[m updated to new annotation format
+* [33m|[m [33m53add72[m add v2 config file
+* [33m|[m [33m5cb6392[m changed default number of jobs to 8
+* [33m|[m [33m5ff327e[m add fname format to be coherent with extract_object_frames
+* [33m|[m [33m262475b[m fixed frame extraction order and duplicates
+[33m|[m[33m/[m  
+[33m|[m *   [33ma7ae27e[m[33m ([m[1;31mupstream/proper_eval_sampling[m[33m)[m merging with main
+[33m|[m [34m|[m[33m\[m  
+[33m|[m [34m|[m[33m/[m  
+[33m|[m[33m/[m[34m|[m   
+* [34m|[m   [33m8240cdc[m Merge pull request #2 from EGO4D/installable
+[36m|[m[1;31m\[m [34m\[m  
+[36m|[m [1;31m|[m * [33mf87b5bf[m v2 updates
+[36m|[m [1;31m|[m[36m/[m  
+[36m|[m[36m/[m[1;31m|[m   
+* [1;31m|[m   [33m6cc7312[m Merge pull request #17 from miguelmartin75/sta-quickstart
+[1;32m|[m[1;33m\[m [1;31m\[m  
+[1;32m|[m * [1;31m|[m [33me1e120a[m Add quickstart for STA in README
+[1;32m|[m[1;32m/[m [1;31m/[m  
+* [1;31m|[m   [33m1304226[m Merge pull request #15 from VJWQ/main
+[1;34m|[m[1;35m\[m [1;31m\[m  
+[1;34m|[m * [1;31m|[m [33m2b743ab[m update README: adding more instructions
+[1;34m|[m * [1;31m|[m [33m5dd8388[m Update README.md
+[1;34m|[m * [1;31m|[m [33mb9f19c6[m update README: adding more instructions
+[1;34m|[m[1;34m/[m [1;31m/[m  
+* [1;31m|[m   [33m971849a[m Merge pull request #6 from EGO4D/fut_loc
+[1;36m|[m[31m\[m [1;31m\[m  
+[1;36m|[m * [1;31m|[m [33m136c391[m[33m ([m[1;31mupstream/fut_loc[m[33m)[m Scripts for future localization.
+* [31m|[m [1;31m|[m   [33mcd8a820[m Merge pull request #13 from VJWQ/patch-1
+[32m|[m[33m\[m [31m\[m [1;31m\[m  
+[32m|[m * [31m|[m [1;31m|[m [33me321356[m Update ego4dhand.py
+[32m|[m[32m/[m [31m/[m [1;31m/[m  
+* [31m/[m [1;31m/[m [33mc232d5f[m Update README.md
+[31m|[m[31m/[m [1;31m/[m  
+* [1;31m|[m [33m9b2b137[m Update README.md
+* [1;31m|[m   [33me36251f[m Merge pull request #3 from VJWQ/main
+[34m|[m[35m\[m [1;31m\[m  
+[34m|[m * [1;31m|[m [33m0b540aa[m Delete LICENSE
+[34m|[m * [1;31m|[m [33md57a3f2[m update fhp starter code
+[34m|[m * [1;31m|[m [33m1ce8779[m update fhp starter code
+[34m|[m[34m/[m [1;31m/[m  
+[34m|[m [1;31m|[m * [33m85c8a0d[m[33m ([m[1;31mupstream/installable[m[33m)[m Merge pull request #21 from miguelmartin75/fix
+[34m|[m [1;31m|[m[1;31m/[m[1;31m|[m 
+[34m|[m [1;31m|[m * [33mb090210[m Fix PyAVVideoReader
+[34m|[m [1;31m|[m[1;31m/[m  
+[34m|[m * [33m38a8777[m exclude scripts, which is seen as a package
+[34m|[m * [33m684ae14[m Add setup.py and update the README
+[34m|[m * [33mbc18eaf[m refactored ego4d -> ego4d_forecasting
+[34m|[m[34m/[m  
+* [33mb14dd7d[m Initial EGO4D Forecasting Benchmark Commit
